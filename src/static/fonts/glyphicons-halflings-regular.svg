@@ -1,0 +1,18 @@
+--2017-11-09 00:04:24--  https://github.com/twbs/bootstrap-sass/raw/master/assets/fonts/bootstrap/glyphicons-halflings-regular.svg
+Resolving github.com... 192.30.253.113, 192.30.253.112
+Connecting to github.com|192.30.253.113|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://raw.githubusercontent.com/twbs/bootstrap-sass/master/assets/fonts/bootstrap/glyphicons-halflings-regular.svg [following]
+--2017-11-09 00:04:25--  https://raw.githubusercontent.com/twbs/bootstrap-sass/master/assets/fonts/bootstrap/glyphicons-halflings-regular.svg
+Resolving raw.githubusercontent.com... 151.101.176.133
+Connecting to raw.githubusercontent.com|151.101.176.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 108738 (106K) [text/plain]
+Saving to: ‘glyphicons-halflings-regular.svg’
+
+     0K .......... .......... .......... .......... .......... 47%  561K 0s
+    50K .......... .......... .......... .......... .......... 94% 1011K 0s
+   100K ......                                                100% 57.0M=0.1s
+
+2017-11-09 00:04:25 (766 KB/s) - ‘glyphicons-halflings-regular.svg’ saved [108738/108738]
+
