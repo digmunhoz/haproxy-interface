@@ -1,5 +1,11 @@
 ## How to execute
 
+# Prereqs
+
+* python
+* pip
+* virtualenv
+
 # Activate virtualenv
 source bin/activate
 
