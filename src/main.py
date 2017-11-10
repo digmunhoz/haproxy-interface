@@ -1,5 +1,4 @@
 from base import app, api
-#from api.hardware import Cpu
 import api.hardware
 import web.home
 

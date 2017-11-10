@@ -2,14 +2,11 @@ from flask_restplus import Resource
 from base import api, STATUS_CODES
 import psutil
 
-@api.route("/cpu", methods=['GET'])
-class Cpu(Resource):
+@api.route("/api/hardware", methods=['GET'])
+class Hardware(Resource):
 
     def get(self):
-        return psutil.cpu_percent()
-
-@api.route("/mem", methods=['GET'])
-class Mem(Resource):
-
-    def get(self):
-        return psutil.virtual_memory().percent
+        return {
+             'mem': psutil.virtual_memory().percent,
+             'cpu': psutil.cpu_percent()
+        }
