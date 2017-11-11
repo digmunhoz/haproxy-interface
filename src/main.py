@@ -1,5 +1,6 @@
 from base import app, api
 import api.hardware
+import api.information
 import web.home
 
 if __name__ == '__main__':

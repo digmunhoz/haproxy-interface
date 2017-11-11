@@ -3,3 +3,5 @@ flask
 psutil
 ipython
 Werkzeug
+requests
+haproxyadmin
