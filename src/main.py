@@ -2,6 +2,7 @@ from base import app, api
 import api.hardware
 import api.information
 import web.home
+import config
 
 if __name__ == '__main__':
     app.run(

@@ -1,8 +1,12 @@
 from flask_restplus import Resource                                                                                                                           
 from base import api, STATUS_CODES
 from haproxyadmin import haproxy
+import config
 
-hap = haproxy.HAProxy(socket_dir='/tmp',socket_file='stats')
+hap = haproxy.HAProxy(
+    socket_dir=config.haproxy_socket['DIR'],
+    socket_file=config.haproxy_socket['FILE']
+)
 
 @api.route("/api/info", methods=['GET'])
 class Info(Resource):
