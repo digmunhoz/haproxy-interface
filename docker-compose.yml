@@ -1,0 +1,13 @@
+version: '3.2'                                                                                                                                                
+services:
+  haproxy:
+    container_name: haproxy
+    build:
+      context: . 
+    ports:
+     - "1936:1936"
+     - "5000:5000"
+    tty: true
+    volumes:
+      - ./haproxy-example:/usr/local/etc/haproxy
+      - ./src:/opt
