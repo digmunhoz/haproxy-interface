@@ -22,4 +22,5 @@
 
 ### API
 `http://localhost:5000/api/info`
+
 `http://localhost:5000/api/errors`
