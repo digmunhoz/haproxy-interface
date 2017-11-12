@@ -29,7 +29,7 @@ class Errors(Resource):
         return hap.errors()
 
 @api.route("/api/backends", methods=['GET'])
-class Ends(Resource):
+class Backends(Resource):
     def get(self):
 
         backends = hap.backends()
@@ -58,7 +58,7 @@ class Ends(Resource):
         return response
 
 @api.route("/api/frontends", methods=['GET'])
-class Ends(Resource):
+class Frontends(Resource):
     def get(self):
         frontends = hap.frontends()
         name, requests, status, maxconn = [], [], [], []
@@ -85,6 +85,38 @@ class Ends(Resource):
                 requests,
                 status,
                 maxconn
+                )
+        ]
+        return response
+
+@api.route("/api/servers", methods=['GET'])
+class Servers(Resource):
+    def get(self):
+        servers = hap.servers()
+        name, status, weight, requests = [], [], [], []
+
+        for server in servers:
+            name.append(server.name)
+
+        for server in servers:
+            status.append(server.status)
+
+        for server in servers:                                                                                                      
+            weight.append(server.weight)
+
+        for server in servers:                                                                                                      
+            requests.append(server.requests)
+
+        response = [{"name": n, 
+                "status": s,
+                "weight": w,
+                "requests": r,
+                } 
+                for n, s, w, r in zip(
+                name, 
+                status,
+                weight,
+                requests
                 )
         ]
         return response
