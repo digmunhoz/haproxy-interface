@@ -24,9 +24,12 @@ def home():
     mem = hardware['mem']
     currconns = info[0]['CurrConns']
     version = info[0]['Version']
+    maxconn = int(info[0]['Hard_maxconn'])
+    maxconn = '{0:,}'.format(maxconn).replace(',','.')
     return render_template('home.html', 
                             cpu=cpu, 
                             mem=mem,
                             currconns=currconns,
                             version=version,
+                            maxconn=maxconn,
     )
