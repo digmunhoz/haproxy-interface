@@ -85,3 +85,5 @@ After the environment started, you can access by using the URL http://localhost:
 `http://localhost:5001/api/info`
 
 `http://localhost:5001/api/errors`
+
+`http://localhost:5001/api/ends`
