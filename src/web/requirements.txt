@@ -1,0 +1,4 @@
+flask
+ipython
+Werkzeug
+requests

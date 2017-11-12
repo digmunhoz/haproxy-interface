@@ -12,9 +12,13 @@
 
 ## Install requirements
 
-`pip install -r requirements.txt`
+`pip install -r src/web/requirements.txt`
 
-## Configure src/config.py
+or the command below for the api
+
+`pip install -r src/api/requirements.txt`
+
+## Configure src/api/config.py and src/web/config.py
 
 ```
 haproxy_socket = dict(                                                                                                                                        
@@ -23,9 +27,13 @@ haproxy_socket = dict(
 )
 ```
 
-## Execute the app on the HAProxy server
+## Execute the api app on the HAProxy server
 
-`python src/main.py`
+`python src/api/main.py`
+
+## Execute the web app whatever you want
+
+`python src/web/main.py`
 
 ## Development environment
 
@@ -74,6 +82,6 @@ After the environment started, you can access by using the URL http://localhost:
 
 ### API
 
-`http://localhost:5000/api/info`
+`http://localhost:5001/api/info`
 
-`http://localhost:5000/api/errors`
+`http://localhost:5001/api/errors`

@@ -3,11 +3,27 @@ services:
   haproxy:
     container_name: haproxy
     build:
+      dockerfile: src/api/Dockerfile
       context: . 
     ports:
      - "1936:1936"
-     - "5000:5000"
+     - "5001:5001"
     tty: true
     volumes:
       - ./haproxy-example:/usr/local/etc/haproxy
-      - ./src:/opt
+      - ./src/api:/opt
+  haproxy-interface:
+    container_name: haproxy-interface
+    build:
+      dockerfile: src/web/Dockerfile
+      context: . 
+    ports:
+     - "5000:5000"
+    tty: true
+    volumes:
+      - ./src/web:/opt
+    depends_on:
+      - haproxy
+    links:
+      - haproxy
+    command: python /opt/main.py 

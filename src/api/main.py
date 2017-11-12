@@ -1,8 +1,7 @@
-from base import app, api
-import api.hardware
-import api.information
-import web.home
+from base import api
+from base import app
 import config
+import api
 
 if __name__ == '__main__':
     app.run(

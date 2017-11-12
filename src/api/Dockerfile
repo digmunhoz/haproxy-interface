@@ -5,6 +5,6 @@ RUN apt-get install -y gcc python-dev python-pip
 
 RUN pip install --upgrade pip
 
-ADD requirements.txt /mnt/
+ADD src/api/requirements.txt /mnt/
 
 RUN pip install -r /mnt/requirements.txt

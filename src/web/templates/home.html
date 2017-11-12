@@ -54,15 +54,19 @@
                     </tr>
                     <tr>
                       <th>CPU Usage</th>
-                      <td>{{ title|default("0%") }}</td>
+                      <td>{{ cpu }}</td>
                     </tr>
                     <tr>
-                      <th>Global Sessions</th>
-                      <td>0</td>
+                      <th>Ram Usage</th>
+                      <td>{{ mem }}</td>
                     </tr>
                     <tr>
-                      <th>Global Queues</th>                                 
-                      <td>0</td>
+                      <th>Current Connection</th>
+                      <td>{{ currconns }}</td>
+                    </tr>
+                    <tr>
+                      <th>Version</th>                                 
+                      <td>{{ version }}</td>
                     </tr>
                   </table>
                 </div>                
