@@ -28,14 +28,63 @@ class Errors(Resource):
     def get(self):
         return hap.errors()
 
-@api.route("/api/ends", methods=['GET'])
+@api.route("/api/backends", methods=['GET'])
 class Ends(Resource):
     def get(self):
-        lst = {'frontend': [], 'backend': [] }
-        frontends = hap.frontends()
-        for frontend in frontends:
-            lst['frontend'].append(frontend.name)
+
         backends = hap.backends()
+        name, requests, status = [], [], []
+
         for backend in backends:
-            lst['backend'].append(backend.name)
-        return lst
+            name.append(backend.name)
+
+        for backend in backends:
+            requests.append(backend.requests)
+
+        for backend in backends:                                                                                                                              
+            status.append(backend.status)
+
+        response = [{"name": n, 
+                "requests": r,
+                "status": s,
+                } 
+                for n, r, s in zip(
+                name, 
+                requests,
+                status
+                )
+        ]
+
+        return response
+
+@api.route("/api/frontends", methods=['GET'])
+class Ends(Resource):
+    def get(self):
+        frontends = hap.frontends()
+        name, requests, status, maxconn = [], [], [], []
+
+        for frontend in frontends:
+            name.append(frontend.name)
+
+        for frontend in frontends:
+            requests.append(frontend.requests)
+
+        for frontend in frontends:                                                                                                      
+            status.append(frontend.status)
+
+        for frontend in frontends:                                                                                                      
+            maxconn.append(frontend.maxconn)
+
+        response = [{"name": n, 
+                "requests": r,
+                "status": s,
+                "maxconn": m,
+                } 
+                for n, r, s, m in zip(
+                name, 
+                requests,
+                status,
+                maxconn
+                )
+        ]
+        return response
