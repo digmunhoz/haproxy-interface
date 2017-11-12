@@ -29,7 +29,7 @@ class Errors(Resource):
         return hap.errors()
 
 @api.route("/api/ends", methods=['GET'])
-class Frontend(Resource):
+class Ends(Resource):
     def get(self):
         lst = {'frontend': [], 'backend': [] }
         frontends = hap.frontends()
