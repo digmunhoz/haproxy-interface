@@ -31,7 +31,7 @@ haproxy_socket = dict(
 
 `python src/api/main.py`
 
-## Execute the web app whereever you want
+## Execute the web app wherever you want
 
 `python src/web/main.py`
 
