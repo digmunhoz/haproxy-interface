@@ -62,14 +62,14 @@
                           </tr>
                           <tr>
                             <th>CPU Usage</th>
-                            <td>{{ cpu }}%</td>
+                            <td>{{ cpu }} %</td>
                           </tr>
                           <tr>
                             <th>Max Connection</th>
-                            <td>{{ maxconn }}</td>
+                            <td><button type="button" class="btn btn-primary btn-xs">{{ maxconn }}</button></td>
                           </tr>
                           <tr>
-                            <th>Version</th>                                 
+                            <th>HAProxy Version</th>                                 
                             <td>{{ version }}</td>
                           </tr>
                         </table>
@@ -80,15 +80,22 @@
               </div>
             </div>
 
-            <div class="row">
+            <div class="row">              
               <div class="panel-body">
                 <div class="col-md-12 text-left">
                   <div class="panel panel-info">
-                    <div class="panel-heading">Balancer Requests</div>
+                    <!-- <div class="panel-heading">Balancer Requests</div> -->
                     <div id="container" style="min-height: 235px; max-height: 235px;">
                     </div>
                   </div>
                 </div>
+
+<!--                 <div class="col-md-6 text-left">
+                  <div class="panel panel-success">
+                    <div id="container" style="min-height: 235px; max-height: 235px;">
+                    </div>
+                  </div>
+                </div> -->
               </div>
             </div>
 
@@ -135,7 +142,7 @@
                 }
             },
             title: {
-                text: ''
+                text: 'LoadBalancer Requests'
             },
             xAxis: {
                 type: 'datetime',
