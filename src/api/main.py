@@ -2,7 +2,14 @@ from base import api
 from base import app
 from flask_cors import CORS
 import config
-import api
+
+# Api endpoints
+import backends
+import errors
+import frontends
+import hardware
+import info
+import servers
 
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
