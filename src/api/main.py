@@ -11,5 +11,6 @@ if __name__ == '__main__':
         host=config.server_listen['ADDRESS'],
         port=config.server_listen['PORT'],
         use_reloader=False,
-        debug=True
+        debug=True,
+        threaded=True
     )
