@@ -2,6 +2,7 @@
 from flask import render_template
 import socket
 import requests
+from json2html import *
 # Importing files
 from base import app
 import config
@@ -53,7 +54,8 @@ def home():
     servers_up = len(servers_up)
     servers_down = len(servers_down)
     backends_up = len(backends_up)
-    backends_down = len(backends_down)    
+    backends_down = len(backends_down)
+
     return render_template('home.html', 
                             cpu=cpu, 
                             mem=mem,
@@ -67,5 +69,6 @@ def home():
                             backends_up=backends_up,
                             backends_down=backends_down,
                             sessrate=sessrate,
-                            ulimitn=ulimitn
+                            ulimitn=ulimitn,
+                            servers=servers
     )
