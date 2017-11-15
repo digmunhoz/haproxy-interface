@@ -1,6 +1,6 @@
 from flask_restplus import Resource
 from base import api, STATUS_CODES
-from haproxyadmin import haproxy
+from haproxyadmin import *
 import config
 
 hap = haproxy.HAProxy(
@@ -13,30 +13,27 @@ class Servers(Resource):
     def get(self):
 
         servers = hap.servers()
-        name, status, weight, requests = [], [], [], []
+        name, status, weight, requests, ip = [], [], [], [], []
 
         for server in servers:
             name.append(server.name)
-
-        for server in servers:
             status.append(server.status)
-
-        for server in servers:
             weight.append(server.weight)
-
-        for server in servers:
             requests.append(server.requests)
+            ip.append(server(address))
 
         response = [{"name": n,
                 "status": s,
                 "weight": w,
                 "requests": r,
+                "ip": ip,
                 }
-                for n, s, w, r in zip(
+                for n, s, w, r, ip in zip(
                 name,
                 status,
                 weight,
-                requests
+                requests,
+                ip
                 )
         ]
         return response
