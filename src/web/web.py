@@ -2,7 +2,7 @@
 from flask import render_template
 import socket
 import requests
-from json2html import *
+
 # Importing files
 from base import app
 import config
