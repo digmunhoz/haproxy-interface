@@ -13,9 +13,13 @@
       }
       @media (min-width: 992px) {
         body {
-          padding-top: 100px;
+          padding-top: 60px;
         }
       }
+
+      .panel-body {
+          padding: 10px;
+      }      
     </style>
 
 </head>
@@ -39,42 +43,101 @@
     </nav>
 
     <!-- Page Content -->
-    <div class="container">
+    <div class="container-fluid">
 
       <div class="row">
-        <div class="col-xl-12 text-left">
+        <div class="col-lg-12 text-left">
           <div class="panel panel-primary">
             <div class="panel-heading"><i class="fa fa-info-circle"></i> Balancer Status
             </div>
 
             <div class="row">
               <div class="panel-body">
-                <div class="col-md-4 text-left">
-                  <div class="panel panel-info">
-                    <div class="panel-heading">General Information</div>
-                    <div class="panel-body" style="min-height: 180px; max-height: 180px;">
-                      <div class="table-responsive">
-                        <table class="table table-hover table-sm">
-                          <tr>
-                            <th>Status</th>                                 
-                            <td><button type="button" class="btn btn-success btn-xs">Online</button></td>
-                            <!-- <td><button type="button" class="btn btn-danger btn-xs">Down</button></td> -->
-                          </tr>
-                          <tr>
-                            <th>CPU Usage</th>
-                            <td>{{ cpu }} %</td>
-                          </tr>
-                          <tr>
-                            <th>Max Connection</th>
-                            <td><button type="button" class="btn btn-primary btn-xs">{{ maxconn }}</button></td>
-                          </tr>
-                          <tr>
-                            <th>HAProxy Version</th>                                 
-                            <td>{{ version }}</td>
-                          </tr>
-                        </table>
-                      </div> 
-                    </div>
+                <div class="col-md-3 text-left">
+                  <div class="panel panel-default" style="min-height: 135px; max-height: 135px;">
+                    <div class="table-responsive">
+                      <table class="table table-hover table-sm table-striped table-condensed table-bordered">
+                        <tr>
+                          <th>Uptime</th>                                 
+                          <td>{{ uptime }}</td>
+                        </tr>
+                        <tr>
+                          <th>CPU Usage</th>
+                          <td>{{ cpu }} %</td>
+                        </tr>
+                        <tr>
+                          <th>Max Connection</th>
+                          <td><button type="button" class="btn btn-primary btn-xs">{{ maxconn }}</button></td>
+                        </tr>
+                        <tr>
+                          <th>HAProxy Version</th>                                 
+                          <td>{{ version }}</td>
+                        </tr>
+                      </table>
+                    </div> 
+                  </div>
+                </div>
+
+<!--                 <div class="col-md-6 text-left">
+                  <div class="panel panel-default" style="min-height: 135px; max-height: 135px;">
+                    <div class="table-responsive">
+                      <table class="table table-hover table-sm table-striped table-condensed table-bordered">
+                        <tr>
+                          <th>Name</th>                                 
+                          <th>Status</th>
+                          <th>Requests</th>
+                        </tr>
+                        <tr>
+                          <td>{{ backend_name }}</td>
+                          <td>1</td>
+                          <td>1</td>
+                        </tr>
+                        <tr>
+                          <td>{{ backend_name }}</td>
+                          <td>1</td>
+                          <td>1</td>
+                        </tr>
+                        <tr>
+                          <td>{{ backend_name }}</td>
+                          <td>1</td>
+                          <td>1</td>
+                        </tr>
+                        <tr>
+                          <td>{{ backend_name }}</td>
+                          <td>1</td>
+                          <td>1</td>
+                        </tr>                                                                        
+                      </table>
+                    </div> 
+                  </div>
+                </div> -->
+
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="panel-body">
+                <div class="col-md-12 text-left">
+                  <div class="panel panel-default">
+                    <div class="table-responsive">
+                      <table class="table table-hover table-sm table-striped table-condensed table-bordered">
+                        <tr>
+                          <th>Name</th>                                 
+                          <th>Status</th>
+                          <th>Servers</th>
+                          <th>Sessions</th>
+                        </tr>
+                        <tr>
+                          <td>{{ name }}</td>
+                          <td><button type="button" class="btn btn-success btn-xs">Online</button></td>
+                          <td>
+                            <button type="button" class="btn btn-success btn-xs">{{ servers_up }} UP</button>
+                            <button type="button" class="btn btn-danger btn-xs">{{ servers_down }} DOWN</button>
+                          </td>
+                          <td>0</td>
+                        </tr>
+                      </table>
+                    </div> 
                   </div>
                 </div>
               </div>
@@ -83,19 +146,10 @@
             <div class="row">              
               <div class="panel-body">
                 <div class="col-md-12 text-left">
-                  <div class="panel panel-info">
-                    <!-- <div class="panel-heading">Balancer Requests</div> -->
-                    <div id="container" style="min-height: 235px; max-height: 235px;">
-                    </div>
+                  <div class="panel panel-default">
+                    <div id="container" style="min-height: 235px; max-height: 235px;"></div>
                   </div>
                 </div>
-
-<!--                 <div class="col-md-6 text-left">
-                  <div class="panel panel-success">
-                    <div id="container" style="min-height: 235px; max-height: 235px;">
-                    </div>
-                  </div>
-                </div> -->
               </div>
             </div>
 
