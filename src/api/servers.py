@@ -13,27 +13,27 @@ class Servers(Resource):
     def get(self):
 
         servers = hap.servers()
-        name, status, weight, requests, ip = [], [], [], [], []
+        name, status, weight, requests, backend = [], [], [], [], []
 
         for server in servers:
             name.append(server.name)
             status.append(server.status)
             weight.append(server.weight)
             requests.append(server.requests)
-            ip.append(server(address))
+            backend.append(server.backendname)
 
         response = [{"name": n,
                 "status": s,
                 "weight": w,
                 "requests": r,
-                "ip": ip,
+                "backend": be,
                 }
-                for n, s, w, r, ip in zip(
+                for n, s, w, r, be in zip(
                 name,
                 status,
                 weight,
                 requests,
-                ip
+                backend
                 )
         ]
         return response
