@@ -54,7 +54,7 @@
             <div class="row">
               <div class="panel-body">
                 <div class="col-md-3 text-left">
-                  <div class="panel panel-default" style="min-height: 135px; max-height: 135px;">
+                  <div class="panel panel-default" style="min-height: 170px; max-height: 170px;">
                     <div class="table-responsive">
                       <table class="table table-hover table-sm table-striped table-condensed table-bordered">
                         <tr>
@@ -68,6 +68,10 @@
                         <tr>
                           <th>Max Connection</th>
                           <td><button type="button" class="btn btn-primary btn-xs">{{ maxconn }}</button></td>
+                        </tr>
+                        <tr>
+                          <th>Max Open Files</th>                                 
+                          <td>{{ ulimitn }}</td>
                         </tr>
                         <tr>
                           <th>HAProxy Version</th>                                 
@@ -124,17 +128,22 @@
                         <tr>
                           <th>Name</th>                                 
                           <th>Status</th>
+                          <th>Backends</th>
                           <th>Servers</th>
-                          <th>Sessions</th>
+                          <th>Session Rate</th>
                         </tr>
                         <tr>
                           <td>{{ name }}</td>
                           <td><button type="button" class="btn btn-success btn-xs">Online</button></td>
                           <td>
+                            <button type="button" class="btn btn-success btn-xs">{{ backends_up }} UP</button>
+                            <button type="button" class="btn btn-danger btn-xs">{{ backends_down }} DOWN</button>
+                          </td>                          
+                          <td>
                             <button type="button" class="btn btn-success btn-xs">{{ servers_up }} UP</button>
                             <button type="button" class="btn btn-danger btn-xs">{{ servers_down }} DOWN</button>
                           </td>
-                          <td>0</td>
+                          <td>{{ sessrate }}</td>
                         </tr>
                       </table>
                     </div> 
