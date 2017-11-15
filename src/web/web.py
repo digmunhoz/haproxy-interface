@@ -43,7 +43,7 @@ def home():
     mem = hardware['mem']
     currconns = info[0]['CurrConns']
     version = info[0]['Version']
-    haproxy_name = info[0]['node']
+    node = info[0]['node']
     uptime = info[0]['Uptime']
     ulimitn = info[0]['Ulimit-n']    
     maxconn = int(info[0]['Hard_maxconn'])
@@ -61,7 +61,7 @@ def home():
                             version=version,
                             maxconn=maxconn,
                             uptime=uptime,
-                            haproxy_name=haproxy_name,
+                            node=node,
                             servers_up=servers_up,
                             servers_down=servers_down,
                             backends_up=backends_up,
