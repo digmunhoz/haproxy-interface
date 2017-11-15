@@ -13,25 +13,25 @@ def home():
     hardware = requests.get('http://{}:{}{}'.format(
         config.api_server['ADDRESS'], 
         config.api_server['PORT'], 
-        '/api/hardware'), timeout=config.connection_timeout
+        config.api_endpoint['HARDWARE']), timeout=config.connection_timeout
     ).json()
 
     info = requests.get('http://{}:{}{}'.format( 
         config.api_server['ADDRESS'], 
         config.api_server['PORT'], 
-        '/api/info'), timeout=config.connection_timeout
+        config.api_endpoint['INFO']), timeout=config.connection_timeout
     ).json()
 
     servers = requests.get('http://{}:{}{}'.format(
         config.api_server['ADDRESS'], 
         config.api_server['PORT'], 
-        '/api/servers'), timeout=config.connection_timeout
+        config.api_endpoint['SERVERS']), timeout=config.connection_timeout
     ).json()
 
     backends = requests.get('http://{}:{}{}'.format(
         config.api_server['ADDRESS'], 
         config.api_server['PORT'], 
-        '/api/backends'), timeout=config.connection_timeout
+        config.api_endpoint['BACKENDS']), timeout=config.connection_timeout
     ).json()
 
     servers_up = [s for s in servers if s['status'] == 'UP']
