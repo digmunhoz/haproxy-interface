@@ -28,6 +28,12 @@ def home():
         config.api_endpoint['SERVERS']), timeout=config.connection_timeout
     ).json()
 
+    frontends = requests.get('http://{}:{}{}'.format(
+        config.api_server['ADDRESS'], 
+        config.api_server['PORT'], 
+        config.api_endpoint['FRONTENDS']), timeout=config.connection_timeout
+    ).json()
+
     backends = requests.get('http://{}:{}{}'.format(
         config.api_server['ADDRESS'], 
         config.api_server['PORT'], 
@@ -70,5 +76,7 @@ def home():
                             backends_down=backends_down,
                             sessrate=sessrate,
                             ulimitn=ulimitn,
-                            servers=servers
+                            servers=servers,
+                            frontends=frontends,
+                            backends=backends
     )

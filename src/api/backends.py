@@ -13,26 +13,27 @@ class Backends(Resource):
     def get(self):
 
         backends = hap.backends()
-        name, requests, status = [], [], []
-
+        bname, brequests, bstatus, sname = [], [], [], []
         for backend in backends:
-            name.append(backend.name)
+            bname.append(backend.name)
+            brequests.append(backend.requests)                                                                                                                         
+            bstatus.append(backend.status)
+            servers = backend.servers()
+            for server in servers:
+                sname.append(server.name)
 
-        for backend in backends:
-            requests.append(backend.requests)
-
-        for backend in backends:                                                                                                                              
-            status.append(backend.status)
-
-        response = [{"name": n, 
-                "requests": r,
-                "status": s,
-                } 
-                for n, r, s in zip(
-                name, 
-                requests,
-                status
-                )
+        response = [
+            {
+            "name": n, 
+            "requests": r,
+            "status": s, 
+            # "servers": [ { "name": sn} for sn in zip (sname,) ]
+            } 
+            for n, r, s in zip(
+            bname, 
+            brequests,
+            bstatus,
+            )                
         ]
 
         return response

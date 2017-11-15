@@ -11,6 +11,7 @@ hap = haproxy.HAProxy(
 @api.route("/api/servers", methods=['GET'])                                                                                                                   
 class Servers(Resource):
     def get(self):
+
         servers = hap.servers()
         name, status, weight, requests = [], [], [], []
 

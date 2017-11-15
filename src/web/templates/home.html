@@ -53,7 +53,7 @@
               <div class="panel-body">
 
                 <div class="col-md-3 text-left">
-                  <div class="panel panel-default">
+                  <div class="panel panel-success">
                     <div class="panel-heading" ><i class="fa fa-info-circle"></i> Overview</div>
                     <div  style="min-height: 160px; max-height: 162px;">
                     <div class="table-responsive">
@@ -85,14 +85,14 @@
                 </div>
 
                 <div class="col-md-6 text-left">
-                  <div class="panel panel-default">
+                  <div class="panel panel-success">
                     <div class="panel-heading" ><i class="fa fa-area-chart"></i> Session Rate</div>
                     <div id="container_session" style="min-height: 160px; max-height: 162px;"></div>
                   </div>
                 </div>  
 
                 <div class="col-md-3 text-left">
-                  <div class="panel panel-default">
+                  <div class="panel panel-success">
                     <div class="panel-heading" ><i class="fa fa-info-circle"></i> General Information</div>
                     <div  style="min-height: 160px; max-height: 162px;">
                     <div class="table-responsive">
@@ -134,14 +134,72 @@
 
             <div class="row">
               <div class="panel-body">
-                <div class="col-md-12 text-left">
-                  <div class="panel panel-default">
+
+                <div class="col-md-4 text-left">
+                  <div class="panel panel-info">
+                  <div class="panel-heading">Frontends </div>
+                    <div class="table-responsive">
+                      <table class="table table-hover table-sm table-striped table-condensed table-bordered">
+                        <tr>
+                          <th><i class="fa fa-server"></i> Name</th>
+                          <th><i class="fa fa-info-circle"></i> Status</th>
+                          <th><i class="fa fa-tasks"></i> Req</th>
+                          <th><i class="fa fa-info-circle"></i> Max Connection</th>
+                        </tr>
+                        {% for frontend in frontends %}
+                          <tr>
+                            <td>{{ frontend.name }}</td>
+                            <td>
+                              {% if frontend.status == 'OPEN' %}
+                                <button type="button" class="btn btn-success btn-xs"><i class="fa fa-thumbs-up"></i> Online</button></td>
+                              {% else %}
+                                <button type="button" class="btn btn-danger btn-xs"><i class="fa fa-thumbs-down"></i> Down</button></td>
+                              {% endif %}
+                            <td>{{ frontend.requests }}</td> 
+                            <td>{{ frontend.maxconn }}</td>              
+                          </tr>
+                        {% endfor %}                        
+                      </table>
+                    </div> 
+                  </div>
+                </div>
+
+                <div class="col-md-4 text-left">
+                  <div class="panel panel-info">
+                  <div class="panel-heading">Backends </div>
+                    <div class="table-responsive">
+                      <table class="table table-hover table-sm table-striped table-condensed table-bordered">
+                        <tr>
+                          <th><i class="fa fa-server"></i> Name</th>
+                          <th><i class="fa fa-info-circle"></i> Status</th>
+                          <th><i class="fa fa-tasks"></i> Req</th>
+                        </tr>
+                        {% for backend in backends %}
+                          <tr>
+                            <td>{{ backend.name }}</td>
+                            <td>
+                              {% if backend.status == 'UP' %}
+                                <button type="button" class="btn btn-success btn-xs"><i class="fa fa-thumbs-up"></i> Online</button></td>
+                              {% else %}
+                                <button type="button" class="btn btn-danger btn-xs"><i class="fa fa-thumbs-down"></i> Down</button></td>
+                              {% endif %}
+                            <td>{{ backend.requests }}</td>              
+                          </tr>
+                        {% endfor %}                        
+                      </table>
+                    </div> 
+                  </div>
+                </div>
+
+                <div class="col-md-4 text-left">
+                  <div class="panel panel-info">
+                    <div class="panel-heading">Servers</div>                  
                     <div class="table-responsive">
                       <table class="table table-hover table-sm table-striped table-condensed table-bordered">
                         <tr>
                           <th><i class="fa fa-server"></i> Server</th>
                           <th><i class="fa fa-info-circle"></i> Status</th>
-                          <th><i class="fa fa-tasks"></i> Request</th>
+                          <th><i class="fa fa-tasks"></i> Req</th>
                           <th><i class="fa fa-balance-scale"></i> Weight</th>                          
                         </tr>
                         {% for server in servers %}
@@ -161,13 +219,20 @@
                     </div> 
                   </div>
                 </div>
+
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="panel-body">
+
               </div>
             </div>
 
             <div class="row">
               <div class="panel-body">
                 <div class="col-md-12 text-left">
-                  <div class="panel panel-default">
+                  <div class="panel panel-primary">
                     <div class="panel-heading" ><i class="fa fa-area-chart"></i> LoadBalancer Requests</div>
                     <div id="container_balancereq" style="min-height: 235px; max-height: 235px;"></div>
                   </div>
