@@ -18,7 +18,11 @@ or the command below for the api
 
 `pip install -r src/api/requirements.txt`
 
-## Configure src/api/config.py and src/web/config.py
+## Rename config_example.py and configure src/api/config.py and src/web/config.py
+
+`cp -rf src/api/config_example.py cp -rf src/api/config.py`
+
+`cp -rf src/web/config_example.py cp -rf src/web/config.py`
 
 ```
 haproxy_socket = dict(                                                                                                                                        

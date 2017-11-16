@@ -1,2 +1,4 @@
 *.pyc
 .Python
+src/web/config.py
+src/api/config.py
