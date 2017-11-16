@@ -7,8 +7,8 @@ import requests
 from base import app
 import config
 
-@app.route("/home", methods=['GET'])
-def home():
+@app.route("/servers", methods=['GET'])
+def servers():
 
     hardware = requests.get('http://{}:{}{}'.format(
         config.api_server['ADDRESS'], 
@@ -62,7 +62,7 @@ def home():
     backends_up = len(backends_up)
     backends_down = len(backends_down)
 
-    return render_template('home.html', 
+    return render_template('servers.html', 
                             cpu=cpu, 
                             mem=mem,
                             currconns=currconns,

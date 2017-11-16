@@ -1,5 +1,6 @@
 from base import app
-import web
+import dashboard
+import servers
 import config
 
 if __name__ == '__main__':
