@@ -1,6 +1,6 @@
 from flask_restplus import Resource                                                                                                                           
 from base import api, STATUS_CODES
-from haproxyadmin import haproxy
+from haproxyadmin import *
 import config
 
 hap = haproxy.HAProxy(
@@ -8,32 +8,54 @@ hap = haproxy.HAProxy(
     socket_file=config.haproxy_socket['FILE']
 )
 
-@api.route("/api/backends", methods=['GET'])
+@api.route("/api/v1/backends", methods=['GET'])
 class Backends(Resource):
     def get(self):
 
         backends = hap.backends()
-        bname, brequests, bstatus, sname = [], [], [], []
+        bname, scur, bstatus, qcur, smax = [], [], [], [], []
         for backend in backends:
             bname.append(backend.name)
-            brequests.append(backend.requests)                                                                                                                         
+            scur.append(backend.metric('scur'))
+            smax.append(backend.metric('smax'))                                                                                                                        
             bstatus.append(backend.status)
-            servers = backend.servers()
-            for server in servers:
-                sname.append(server.name)
+            qcur.append(backend.metric('qcur'))
 
         response = [
             {
             "name": n, 
-            "requests": r,
-            "status": s, 
-            # "servers": [ { "name": sn} for sn in zip (sname,) ]
+            "scur": scur,
+            "smax": smax,
+            "status": s,
+            "qcur": qcur,
             } 
-            for n, r, s in zip(
+            for n, scur, smax, s, qcur in zip(
             bname, 
-            brequests,
+            scur,
+            smax,
             bstatus,
+            qcur,
             )                
         ]
 
         return response
+
+
+@api.route("/api/v2/backends", methods=['GET'])
+class Backends(Resource):
+    def get(self):
+
+        backends = hap.backends()
+        result = {'backends':[]}
+        sb = 0
+        for backend in backends:
+            result['backends'].append({ 'name': backend.name, 'servers':[] })
+            ss = 0
+            for server in backend.servers():
+                result['backends'][sb]['servers'].append({'name': server.name, 'parameters':{}})
+                for m in SERVER_METRICS:
+                    result['backends'][sb]['servers'][ss]['parameters'].update({m: server.metric(m)})
+                ss += 1
+            sb += 1
+
+        return [result]
