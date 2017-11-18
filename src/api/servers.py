@@ -8,17 +8,18 @@ hap = haproxy.HAProxy(
     socket_file=config.haproxy_socket['FILE']
 )
 
-@api.route("/api/servers", methods=['GET'])                                                                                                                   
+@api.route("/api/v1/servers", methods=['GET'])                                                                                                                   
 class Servers(Resource):
     def get(self):
 
         servers = hap.servers()
-        name, status, weight, requests, backend = [], [], [], [], []
+        name, status, weight, requests, backend, scur = [], [], [], [], [], []
 
         for server in servers:
             name.append(server.name)
             status.append(server.status)
             weight.append(server.weight)
+            scur.append(server.metric('scur'))
             requests.append(server.requests)
             backend.append(server.backendname)
 
@@ -27,13 +28,15 @@ class Servers(Resource):
                 "weight": w,
                 "requests": r,
                 "backend": be,
+                "scur": scur,
                 }
-                for n, s, w, r, be in zip(
+                for n, s, w, r, be, scur in zip(
                 name,
                 status,
                 weight,
                 requests,
-                backend
+                backend,
+                scur
                 )
         ]
         return response
