@@ -8,7 +8,7 @@ hap = haproxy.HAProxy(
     socket_file=config.haproxy_socket['FILE']
 )
 
-@api.route("/api/frontends", methods=['GET'])                                                                                                                 
+@api.route("/api/v1/frontends", methods=['GET'])                                                                                                                 
 class Frontends(Resource):
     def get(self):
         frontends = hap.frontends()

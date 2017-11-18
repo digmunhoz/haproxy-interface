@@ -8,7 +8,7 @@ hap = haproxy.HAProxy(
     socket_file=config.haproxy_socket['FILE']
 )
 
-@api.route("/api/errors", methods=['GET'])                                                                                                                    
+@api.route("/api/v1/errors", methods=['GET'])                                                                                                                    
 class Errors(Resource):
     def get(self):
         return hap.errors()

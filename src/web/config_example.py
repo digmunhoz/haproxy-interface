@@ -15,12 +15,12 @@ ajax_api = dict (
 )
 
 api_endpoint = dict (
-	INFO = '/api/info',
-	SERVERS = '/api/servers',
-	BACKENDS = '/api/backends',
-	FRONTENDS = '/api/frontends',
-	ERRORS = '/api/errors',
-	HARDWARE = '/api/hardware',
+	INFO = '/api/v1/info',
+	SERVERS = '/api/v1/servers',
+	BACKENDS = '/api/v1/backends',
+	FRONTENDS = '/api/v1/frontends',
+	ERRORS = '/api/v1/errors',
+	HARDWARE = '/api/v1/hardware',
 )
 
 connection_timeout = 3

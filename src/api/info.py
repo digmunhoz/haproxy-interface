@@ -8,7 +8,7 @@ hap = haproxy.HAProxy(
     socket_file=config.haproxy_socket['FILE']
 )
 
-@api.route("/api/info", methods=['GET'])                                                                                                                      
+@api.route("/api/v1/info", methods=['GET'])                                                                                                                      
 class Info(Resource):
     def get(self):
         return hap.info()
