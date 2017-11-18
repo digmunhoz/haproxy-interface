@@ -7,7 +7,7 @@ import requests
 from base import app
 import config
 
-@app.route("/dashboard", methods=['GET'])
+@app.route("/", methods=['GET'])
 def dashboard():
 
     hardware = requests.get('http://{}:{}{}'.format(
