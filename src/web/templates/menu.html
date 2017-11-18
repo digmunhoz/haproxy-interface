@@ -1,0 +1,15 @@
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/dashboard"><i class="fa fa-server"></i> HAProxy Interface</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="{% if  request.endpoint == "dashboard" %}active{% endif %}"><a href="/dashboard"><i class="fa fa-dashboard fa-lg"></i> Dashboard</a></li>
+          <li class="{% if  request.endpoint == "servers" %}active{% endif %}"><a href="/servers"><i class="fa fa-server fa-lg"></i> Servers</a></li>
+        </ul>
+<!--         <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><i class="fa fa-user"></i> Username</a></li>
+        </ul> -->
+      </div>
+    </nav>
