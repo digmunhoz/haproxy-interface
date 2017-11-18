@@ -44,28 +44,43 @@
     <div class="container-fluid" style="font-size: 13px;">
 
       <div class="row">
+
         <div class="col-lg-12 text-left">
 
-            <div class="row">
-              <div class="panel-body">
-
-                <div class="col-md-3 text-left" id="overview">
-                  {% include 'overview.html' %}
-                </div>
-
-                <div class="col-md-6 text-left">
-                  <div class="panel panel-info">
-                    <div class="panel-heading" ><i class="fa fa-area-chart"></i> Session Rate</div>
-                    <div id="container_session" style="min-height: 160px; max-height: 162px;"></div>
-                  </div>
-                </div>  
-
-                <div class="col-md-3 text-left" id="generalinfo">
-                  {% include 'generalinfo.html' %}
-                </div>
-
+<!--           <div class="row">            
+            <div class="col-md-12">
+              <div class="well well-sm text-right">              
+                <select class="selectpicker">
+                  <option>1s</option>
+                  <option>2s</option>
+                  <option>3s</option>
+                  <option>4s</option>
+                  <option>5s</option>
+                </select>
               </div>
             </div>
+          </div> -->
+
+          <div class="row">
+            <div class="panel-body">
+
+              <div class="col-md-3 text-left" id="overview">
+                {% include 'overview.html' %}
+              </div>
+
+              <div class="col-md-6 text-left">
+                <div class="panel panel-info">
+                  <div class="panel-heading" ><i class="fa fa-area-chart"></i> Session Rate</div>
+                  <div id="container_session" style="min-height: 160px; max-height: 162px;"></div>
+                </div>
+              </div>  
+
+              <div class="col-md-3 text-left" id="generalinfo">
+                {% include 'generalinfo.html' %}
+              </div>
+
+            </div>
+          </div>
 
 
           <div class="row">
