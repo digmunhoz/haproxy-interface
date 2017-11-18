@@ -1,0 +1,29 @@
+                  <div class="panel panel-info">
+                    <div class="panel-heading" ><i class="fa fa-info-circle"></i> Overview</div>
+                    <div  style="min-height: 160px; max-height: 162px;">
+                    <div class="table-responsive">
+                      <table class="table table-hover table-sm table-striped table-condensed">
+                        <tr>
+                          <th>Uptime</th>                                 
+                          <td>{{ uptime }}</td>
+                        </tr>
+                        <tr>
+                          <th>CPU Usage</th>
+                          <td>{{ cpu }} %</td>
+                        </tr>
+                        <tr>
+                          <th>Max Connection</th>
+                          <td><button type="button" class="btn btn-primary btn-xs">{{ maxconn }}</button></td>
+                        </tr>
+                        <tr>
+                          <th>Max Open Files</th>                                 
+                          <td>{{ ulimitn }}</td>
+                        </tr>
+                        <tr>
+                          <th>HAProxy Version</th>                                 
+                          <td>{{ version }}</td>
+                        </tr>
+                      </table>
+                    </div> 
+                    </div>
+                  </div>

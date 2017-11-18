@@ -1,0 +1,35 @@
+                  <div class="panel panel-info">
+                    <div class="panel-heading" ><i class="fa fa-info-circle"></i> General Information</div>
+                    <div  style="min-height: 160px; max-height: 162px;">
+                    <div class="table-responsive">
+                      <table class="table table-hover table-sm table-striped table-condensed">
+                        <tr>
+                          <th>Server Name</th>                                 
+                          <td>{{ node }}</td>
+                        </tr>
+                        <tr>
+                          <th>HAProxy Status</th>
+                          <td><button type="button" class="btn btn-success btn-xs">Online</button></td>
+                        </tr>
+                        <tr>
+                          <th>Backends</th>
+                          <td>
+                            <button type="button" class="btn btn-success btn-xs">{{ backends_up }} UP</button>
+                            <button type="button" class="btn btn-danger btn-xs">{{ backends_down }} DOWN</button>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th>Servers</th>                                 
+                          <td>
+                            <button type="button" class="btn btn-success btn-xs">{{ servers_up }} UP</button>
+                            <button type="button" class="btn btn-danger btn-xs">{{ servers_down }} DOWN</button>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th>Session Rate</th>                                 
+                          <td>{{ sessrate }}</td>
+                        </tr>
+                      </table>
+                    </div> 
+                    </div>
+                  </div>
