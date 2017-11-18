@@ -78,5 +78,5 @@ def servers():
                             ulimitn=ulimitn,
                             servers=servers,
                             frontends=frontends,
-                            backends=backends
+                            backends=backends,
     )

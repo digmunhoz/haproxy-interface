@@ -76,7 +76,9 @@
                         <th><i class="fa fa-server"></i> Name</th>
                         <th><i class="fa fa-info-circle"></i> Status</th>
                         <th><i class="fa fa-info-circle"></i> Cur/Max Sessions</th>
-                        <th><i class="fa fa-balance-scale"></i> Weight</th>                          
+                        <th><i class="fa fa-info-circle"></i> In/Out Bytes</th>
+                        <!-- <th><i class="fa fa-info-circle"></i> Check Status</th> -->
+                        <th><i class="fa fa-balance-scale"></i> Weight</th>
                       </tr>
                       {% for server in servers %}
                         <tr>
@@ -89,7 +91,9 @@
                               <button type="button" class="btn btn-danger btn-xs"><i class="fa fa-thumbs-down"></i> Down</button></td>
                             {% endif %}
                           <td>{{ server.scur }} / {{ server.smax }}</td>
-                          <td>{{ server.weight }}</td>                            
+                          <td>{{ server.bIn }} / {{ server.bOut }}</td>
+                          <!-- <td>{{ server.check_status }}</td> -->
+                          <td>{{ server.weight }}</td>                           
                         </tr>
                       {% endfor %}                        
                     </table>
