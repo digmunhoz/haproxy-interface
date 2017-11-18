@@ -13,13 +13,14 @@ class Servers(Resource):
     def get(self):
 
         servers = hap.servers()
-        name, status, weight, requests, backend, scur = [], [], [], [], [], []
+        name, status, weight, requests, backend, scur, smax = [], [], [], [], [], [], []
 
         for server in servers:
             name.append(server.name)
             status.append(server.status)
             weight.append(server.weight)
             scur.append(server.metric('scur'))
+            smax.append(server.metric('smax'))
             requests.append(server.requests)
             backend.append(server.backendname)
 
@@ -29,14 +30,16 @@ class Servers(Resource):
                 "requests": r,
                 "backend": be,
                 "scur": scur,
+                "smax": smax,
                 }
-                for n, s, w, r, be, scur in zip(
+                for n, s, w, r, be, scur, smax in zip(
                 name,
                 status,
                 weight,
                 requests,
                 backend,
-                scur
+                scur,
+                smax,
                 )
         ]
         return response

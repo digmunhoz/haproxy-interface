@@ -13,13 +13,14 @@ class Backends(Resource):
     def get(self):
 
         backends = hap.backends()
-        bname, scur, bstatus, qcur, smax = [], [], [], [], []
+        bname, scur, bstatus, qcur, smax, qmax = [], [], [], [], [], []
         for backend in backends:
             bname.append(backend.name)
             scur.append(backend.metric('scur'))
             smax.append(backend.metric('smax'))                                                                                                                        
             bstatus.append(backend.status)
             qcur.append(backend.metric('qcur'))
+            qmax.append(backend.metric('qmax'))
 
         response = [
             {
@@ -28,13 +29,15 @@ class Backends(Resource):
             "smax": smax,
             "status": s,
             "qcur": qcur,
+            "qmax": qmax,
             } 
-            for n, scur, smax, s, qcur in zip(
+            for n, scur, smax, s, qcur, qmax in zip(
             bname, 
             scur,
             smax,
             bstatus,
             qcur,
+            qmax,
             )                
         ]
 
