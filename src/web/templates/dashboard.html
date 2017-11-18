@@ -30,7 +30,7 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="/home"><i class="fa fa-server"></i> HAProxy Interface</a>
+          <a class="navbar-brand" href="/dashboard"><i class="fa fa-server"></i> HAProxy Interface</a>
         </div>
         <ul class="nav navbar-nav">
           <li class="active"><a href="/dashboard"><i class="fa fa-dashboard fa-lg"></i> Dashboard</a></li>
@@ -171,7 +171,8 @@
                       <tr>
                         <th><i class="fa fa-server"></i> Name</th>
                         <th><i class="fa fa-info-circle"></i> Status</th>
-                        <th><i class="fa fa-tasks"></i> Req</th>
+                        <th><i class="fa fa-tasks"></i> Cur/Max Session</th>
+                        <th><i class="fa fa-info-circle"></i> Current Queue</th>
                       </tr>
                       {% for backend in backends %}
                         <tr>
@@ -182,7 +183,8 @@
                             {% else %}
                               <button type="button" class="btn btn-danger btn-xs"><i class="fa fa-thumbs-down"></i> Down</button></td>
                             {% endif %}
-                          <td>{{ backend.requests }}</td>              
+                          <td>{{ backend.scur }} / {{ backend.smax }}</td>
+                          <td>{{ backend.qcur }}</td>              
                         </tr>
                       {% endfor %}                        
                     </table>
@@ -231,7 +233,7 @@
                         setInterval(function () {
                             $.ajax({
                                 type: 'GET',
-                                url: 'http://localhost:5001/api/info',
+                                url: 'http://localhost:5001/api/v1/info',
                                 dataType: 'json',
                                 success: function(data) { 
                                   var y = parseInt(data[0].CurrConns);
@@ -306,7 +308,7 @@
                         setInterval(function () {
                             $.ajax({
                                 type: 'GET',
-                                url: 'http://localhost:5001/api/info',
+                                url: 'http://localhost:5001/api/v1/info',
                                 dataType: 'json',
                                 success: function(data) { 
                                   var y = parseInt(data[0].SessRate);
