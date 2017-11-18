@@ -86,12 +86,12 @@ After the environment started, you can access by using the URL http://localhost:
 
 ### API
 
-`http://localhost:5001/api/info`
+`http://localhost:5001/api/v1/info`
 
-`http://localhost:5001/api/errors`
+`http://localhost:5001/api/v1/errors`
 
-`http://localhost:5001/api/frontends`
+`http://localhost:5001/api/v1/frontends`
 
-`http://localhost:5001/api/backends`
+`http://localhost:5001/api/v1/backends`
 
-`http://localhost:5001/api/servers`
+`http://localhost:5001/api/v1/servers`
