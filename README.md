@@ -27,6 +27,7 @@ To execute the API, you need to follow these steps:
 * Pull the project to a specific directory on HAProxy Server;
 * Rename the file config_example.py to config.py (`src/api/config_example.py`);
 * Inside the config file, change the parameter `api_server['ADDRESS']` to point to the same network address from HAProxy Server (where the API is running);
+* Still on config file, configure the parameter `ajax_api['ADDRESS']` to use the accessible IP where the API is running (this is the address which your browser will contact to get graphs information);
 * Start the virtualenv with the command  `source bin/activate`;
 * Install the requirements running `pip install -r src/web/requirements.txt`;
 * Execute the command `python src/web/main.py`

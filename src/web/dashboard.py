@@ -61,6 +61,9 @@ def dashboard():
     servers_down = len(servers_down)
     backends_up = len(backends_up)
     backends_down = len(backends_down)
+    ajax_api_address = config.ajax_api['ADDRESS']
+    ajax_api_port = config.ajax_api['PORT']
+    ajax_api_endpoint = config.api_endpoint['INFO']
 
     return render_template('dashboard.html', 
                             cpu=cpu, 
@@ -78,7 +81,10 @@ def dashboard():
                             ulimitn=ulimitn,
                             servers=servers,
                             frontends=frontends,
-                            backends=backends
+                            backends=backends,
+                            ajax_api_address=ajax_api_address,
+                            ajax_api_port=ajax_api_port,
+                            ajax_api_endpoint=ajax_api_endpoint,
     )
 
 

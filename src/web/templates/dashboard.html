@@ -157,7 +157,7 @@
                         setInterval(function () {
                             $.ajax({
                                 type: 'GET',
-                                url: 'http://localhost:5001/api/v1/info',
+                                url: 'http://{{ ajax_api_address }}:{{ ajax_api_port }}{{ ajax_api_endpoint }}',
                                 dataType: 'json',
                                 success: function(data) { 
                                   var y = parseInt(data[0].CurrConns);
@@ -232,7 +232,8 @@
                         setInterval(function () {
                             $.ajax({
                                 type: 'GET',
-                                url: 'http://localhost:5001/api/v1/info',
+                                // url: 'http://localhost:5001/api/v1/info',
+                                url: 'http://{{ ajax_api_address }}:{{ ajax_api_port }}{{ ajax_api_endpoint }}',
                                 dataType: 'json',
                                 success: function(data) { 
                                   var y = parseInt(data[0].SessRate);
