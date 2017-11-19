@@ -3,6 +3,7 @@
 ## Application Prereqs
 
 * python
+* python-dev
 * pip
 * virtualenv
 
