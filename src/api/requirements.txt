@@ -6,3 +6,4 @@ Werkzeug
 requests
 haproxyadmin
 flask_cors
+uwsgi

@@ -1,6 +1,7 @@
 # Variables                                                                                                                                                   
 CONTAINER_NAME:=haproxy
-HAPROXY_INTERFACE:=/opt/main.py
+UWSGI_FILE:=/opt/api.ini
+CHDIR:=/opt
 
 help: ; @ \
 	clear; \
@@ -23,14 +24,14 @@ build: ; @\
 	echo "";\
 	docker-compose down ; \
 	docker-compose up --build --remove-orphans -d ; \
-	docker exec ${CONTAINER_NAME} python ${HAPROXY_INTERFACE} 
+	docker exec ${CONTAINER_NAME} uwsgi ${UWSGI_FILE} --chdir ${CHDIR} 
 
 start: ; @\
 	clear; \
 	echo "[Starting Development Environment...]"; \
-	echo "";\
-	docker-compose up -d ; \
-	docker exec ${CONTAINER_NAME} python ${HAPROXY_INTERFACE}
+	echo ""; \
+	docker-compose up -d; \
+	docker exec ${CONTAINER_NAME} uwsgi ${UWSGI_FILE} --chdir ${CHDIR}
 
 stop: ; @\
 	clear; \

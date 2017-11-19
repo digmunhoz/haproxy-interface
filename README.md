@@ -7,48 +7,46 @@
 * pip
 * virtualenv
 
-## Activate virtualenv
+## Running the API
 
-`source bin/activate`
+First of all, you need to run the API which will read information from HAProxy using it socket file (HAProxy conf needs to have this: `stats  socket SOME_FILE`)
 
-## Install requirements
+To execute the API, you need to follow these steps:
 
-`pip install -r src/web/requirements.txt`
+* Pull the project to a specific directory on HAProxy Server;
+* Rename the file config_example.py to config.py (`src/api/config_example.py`);
+* Inside the config file, change the parameter `haproxy_socket['DIR']` to point to the same place used on HAProxy config (`stats  socket` option);
+* Start the virtualenv with the command  `source bin/activate`;
+* Install the requirements running `pip install -r src/api/requirements.txt`;
+* Enter on directory `src/api` and then run the command `uwsgi api.ini`.
 
-or the command below for the api
+>I'm gonna create an `install` and `init` script for all Linux distributions but I don't know when. For while, use the methods above to run the API.
 
-`pip install -r src/api/requirements.txt`
+## Running the Web Interface
 
-## Rename config_example.py and configure src/api/config.py and src/web/config.py
-
-`cp -rf src/api/config_example.py cp -rf src/api/config.py`
-
-`cp -rf src/web/config_example.py cp -rf src/web/config.py`
-
-```
-haproxy_socket = dict(                                                                                                                                        
-    DIR = '/tmp',
-    FILE = 'stats',
-)
-```
-
-## Execute the api app on the HAProxy server
-
-`python src/api/main.py`
-
-## Execute the web app wherever you want
-
-`python src/web/main.py`
+* Pull the project to a specific directory on HAProxy Server;
+* Rename the file config_example.py to config.py (`src/api/config_example.py`);
+* Inside the config file, change the parameter `api_server['ADDRESS']` to point to the same network address from HAProxy Server (where the API is running);
+* Start the virtualenv with the command  `source bin/activate`;
+* Install the requirements running `pip install -r src/web/requirements.txt`;
+* Execute the command `python src/web/main.py`
 
 ## Development environment
 
-### Pre-reqs
+I have created a very interesting way to run the whole environment on your computer using docker.
+
+All of theses proccess is based on `make` command using the file `Makefile`.
+
+The next, you'll see the instructions to manipulate the development environment.
+
+### Prereqs
 
   - Docker and docker-compose installed on your computer (https://docs.docker.com/engine/installation/)
 
 ### Starting
 
-To start the environment, we'll use the `make` command as you can see below.
+The first command you'll have to run is `make build`.
+This command will create the whole environment in your computer using docker. 
 
 ```
 make build:	Create new development environment
@@ -61,9 +59,6 @@ make clean:	Clean dangling volume and images from docker
 make help:	How to use make command
 ```
 
-> **Note:**
-
-> The first time you will need to run **make build**.
 
 ### Explaining Parameters
 
