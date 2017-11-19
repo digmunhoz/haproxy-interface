@@ -82,7 +82,7 @@ After the environment started, you can access by using the URL http://localhost:
 
 ### Web
 
-`http://localhost:5000/home`
+`http://localhost:5000`
 
 ### API
 
@@ -95,3 +95,13 @@ After the environment started, you can access by using the URL http://localhost:
 `http://localhost:5001/api/v1/backends`
 
 `http://localhost:5001/api/v1/servers`
+
+## Screenshots
+
+**Dashboard:**
+
+![Dashboard](screenshots/HAProxyInterface-Dash.png)
+
+**Servers and Backends:**
+
+![](screenshots/HAProxyInterface-Servers.png)
