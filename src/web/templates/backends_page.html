@@ -1,0 +1,26 @@
+                <div class="panel panel-info">
+                  <div class="panel-heading">Backends</div>
+                  <div class="table-responsive">
+                    <table class="table table-hover table-sm table-striped table-condensed table-bordered">
+                      <tr>
+                        <th><i class="fa fa-server"></i> Name</th>
+                        <th><i class="fa fa-info-circle"></i> Status</th>
+                        <th><i class="fa fa-info-circle"></i> Cur/Max Session</th>
+                        <th><i class="fa fa-info-circle"></i> Cur/Max Queue</th>
+                      </tr>
+                      {% for backend in backends %}
+                        <tr>
+                          <td>{{ backend.name }}</td>
+                          <td>
+                            {% if backend.status == 'UP' %}
+                              <button type="button" class="btn btn-success btn-xs"><i class="fa fa-thumbs-up"></i> Online</button></td>
+                            {% else %}
+                              <button type="button" class="btn btn-danger btn-xs"><i class="fa fa-thumbs-down"></i> Down</button></td>
+                            {% endif %}
+                          <td>{{ backend.scur }} / {{ backend.smax }}</td>
+                          <td>{{ backend.qcur }} / {{ backend.qmax }}</td>
+                        </tr>
+                      {% endfor %}                        
+                    </table>
+                  </div> 
+                </div>

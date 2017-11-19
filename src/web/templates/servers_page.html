@@ -1,0 +1,32 @@
+                <div class="panel panel-info">
+                  <div class="panel-heading">Servers</div>                  
+                  <div class="table-responsive">
+                    <table class="table table-hover table-sm table-striped table-condensed table-bordered">
+                      <tr>
+                        <th><i class="fa fa-server"></i> Backend</th>
+                        <th><i class="fa fa-server"></i> Name</th>
+                        <th><i class="fa fa-info-circle"></i> Status</th>
+                        <th><i class="fa fa-info-circle"></i> Cur/Max Sessions</th>
+                        <th><i class="fa fa-info-circle"></i> In/Out Bytes</th>
+                        <!-- <th><i class="fa fa-info-circle"></i> Check Status</th> -->
+                        <th><i class="fa fa-balance-scale"></i> Weight</th>
+                      </tr>
+                      {% for server in servers %}
+                        <tr>
+                          <td>{{ server.backend }}</td>
+                          <td>{{ server.name }}</td>
+                          <td>
+                            {% if server.status == 'UP' %}
+                              <button type="button" class="btn btn-success btn-xs"><i class="fa fa-thumbs-up"></i> Online</button></td>
+                            {% else %}
+                              <button type="button" class="btn btn-danger btn-xs"><i class="fa fa-thumbs-down"></i> Down</button></td>
+                            {% endif %}
+                          <td>{{ server.scur }} / {{ server.smax }}</td>
+                          <td>{{ server.bIn }} / {{ server.bOut }}</td>
+                          <!-- <td>{{ server.check_status }}</td> -->
+                          <td>{{ server.weight }}</td>                           
+                        </tr>
+                      {% endfor %}                        
+                    </table>
+                  </div> 
+                </div>
